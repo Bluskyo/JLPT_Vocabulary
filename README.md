@@ -3,4 +3,5 @@ The original files from: https://www.tanos.co.uk/jlpt/ are formatted in difficul
 To get the raw files (like in dataRaw) I downloaded Anki Version 2.0.52 and the .anki file for each JLPT level.<br>
 Afterwhich I deleted the meaning field in Anki and exported the deck as a .txt file then cleaned the file up.<br>
 These files in .txt format are available in the "data/rawData" folder.<br>
-<br>Result files are in the result folder.
+
+You can download the files here: https://github.com/Bluskyo/JLPT_Vocabulary/releases/tag/v1.0
