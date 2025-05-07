@@ -18,10 +18,8 @@ def makeJSON():
     
     dictonaryJson = json.dumps(dictonary, indent=4, ensure_ascii=False)
 
-    print(dictonaryJson)
-
-    with open("data/allWords/JLPTWords.json", "w", encoding='utf8') as writeFile:
+    with open("data/results/JLPTWords.json", "w", encoding='utf8') as writeFile:
         writeFile.write(dictonaryJson)
 
-##makeCSV()
-##makeJSON()
+makeCSV()
+makeJSON()
