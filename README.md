@@ -6,3 +6,28 @@ Afterwhich I deleted the meaning field in Anki and exported the deck as a .txt f
 These files in .txt format are available in the "data/rawData" folder.<br>
 
 You can download the files here: https://github.com/Bluskyo/JLPT_Vocabulary/releases/tag/v1.0
+
+## Note:
+If used with JMDict, these words are not found:<br>
+`0: "依"
+1: "伊井"
+2: "お八"
+3: "僅"
+4: "巨"
+5: "佐"
+6: "しいんと"
+7: "働"
+8: "伐"
+9: "不山戯る"
+10: "倣"
+11: "藍褸"
+12: "あひら"
+13: "いっていらっしゃい"
+14: "おげんきで"
+15: "おまちください"
+16: "ごぞんじですか"
+17: "滑れる"
+18: "Ͼ立"
+19: "×"
+20: "ぺん"
+21: "よると"`
