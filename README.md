@@ -5,7 +5,7 @@ This Project aims to provide a clean, lossless and easy format for these files.<
 Afterwhich I deleted the meaning field in Anki and exported the deck as a .txt file then cleaned the file up.<br>
 These files in .txt format are available in the "data/rawData" folder.<br>
 
-You can download the files here: https://github.com/Bluskyo/JLPT_Vocabulary/releases/tag/v1.0
+You can download the files here: https://github.com/Bluskyo/JLPT_Vocabulary/releases/latest
 
 ## Note:
 If used with JMDict, these words are not found:<br>
