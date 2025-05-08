@@ -1,7 +1,7 @@
 import json
 
 def makeCSV():
-    with open("data/allWords/JLPTWords.csv", "w") as writeFile:
+    with open("data/results/JLPTWords.csv", "w") as writeFile:
         writeFile.write(f"Word,JLPTLevel\n")
         for jlptLevel in range(1, 6):
             with open(f"data/rawData/N{jlptLevel}.txt") as file:
