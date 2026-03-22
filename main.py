@@ -6,7 +6,7 @@ def makeCSV():
         for jlptLevel in range(1, 6):
             with open(f"data/rawData/N{jlptLevel}.txt") as file:
                 for line in file:
-                    writeFile.write(f"{line.strip()},N{jlptLevel}\n")
+                    writeFile.write(f"{line.strip()},{jlptLevel}\n")
 
 def makeJSON():
     dictonary = {}
@@ -14,7 +14,7 @@ def makeJSON():
     for jlptLevel in range(1, 6):
         with open(f"data/rawData/N{jlptLevel}.txt") as file:
             for line in file:
-                dictonary[line.strip()] = f"N{jlptLevel}"
+                dictonary[line.strip()] = jlptLevel
     
     dictonaryJson = json.dumps(dictonary, indent=4, ensure_ascii=False)
 
