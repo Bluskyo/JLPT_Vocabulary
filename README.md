@@ -10,10 +10,10 @@ You can download the files here: <a href="https://github.com/Bluskyo/JLPT_Vocabu
 ## NOTE: 
 There are multiple entries that has the same word but with a different reading or kanji. For example:<br>
 `
-"会う": "N5",
-"遭う": "N2",
-"挨拶": "N3",
-"あいさつ": "N4",...
+"会う": "5",
+"遭う": "2",
+"挨拶": "3",
+"あいさつ": "4",...
 `
 ---
 <br>If used with JMDict, these words are not found:<br>
