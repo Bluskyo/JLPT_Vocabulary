@@ -2,13 +2,13 @@ import json
 import csv
 from collections import defaultdict
 
-def makeCSV():
-    with open("data/results/JLPTWords.csv", "w", encoding='utf8') as writeFile:
+def makeVocabCSV():
+    with open("data/vocab/results/JLPTWords.csv", "w", encoding='utf8') as writeFile:
         writer = csv.writer(writeFile)
         writer.writerow(["Kanji", "Reading", "Level"]) # Write header
 
         for jlptLevel in range(1, 6):
-            source_path = f"data/parsedData/n{jlptLevel}_vocab_cleaned.csv"
+            source_path = f"data/vocab/parsedData/n{jlptLevel}_vocab_cleaned.csv"
             
             try:
                 with open(source_path, "r", encoding='utf8', newline='') as readFile:
@@ -21,14 +21,14 @@ def makeCSV():
                         writer.writerow(row + [jlptLevel])
             except FileNotFoundError:
                 print(f"Warning: {source_path} not found. Skipping...")
-    print("Created csv file at: data/results/JLPTWords.csv")
+    print("Created csv file at: data/vocab/results/JLPT_Vocab.csv")
             
-def makeJSON():
+def makeVocabJSON():
     dictonary = {}
     lookup = defaultdict(list)
 
     for jlptLevel in range(1, 6):
-        with open(f"data/parsedData/n{jlptLevel}_vocab_cleaned.csv") as file:
+        with open(f"data/vocab/parsedData/n{jlptLevel}_vocab_cleaned.csv") as file:
             next(file)
             for line in file:
                 entry = line.strip().split(",")
@@ -46,9 +46,36 @@ def makeJSON():
     
     dictonaryJson = json.dumps(lookup, indent=4, ensure_ascii=False)
 
-    with open("data/results/JLPTWords.json", "w", encoding='utf8') as writeFile:
+    with open("data/vocab/results/JLPT_vocab.json", "w", encoding='utf8') as writeFile:
         writeFile.write(dictonaryJson)
-    print("Created json file at: data/results/JLPTWords.json")
+    print("Created json file at: data/vocab/results/JLPT_vocab.json")
 
-makeCSV()
-makeJSON()
+def makeKanjiJSON():
+    dictonary = {}
+    lookup = defaultdict(list)
+
+    for jlptLevel in range(1, 6):
+        with open(f"data/kanji/parsedData/n{jlptLevel}_vocab_cleaned.csv") as file:
+            next(file)
+            for line in file:
+                entry = line.strip().split(",")
+
+                if entry[1] == "":
+                    lookup[entry[0]].append(
+                        {"reading": entry[0],
+                        "level": jlptLevel}
+                    )
+                else:
+                    lookup[entry[0]].append(
+                        {"reading": entry[1],
+                        "level": jlptLevel}
+                    )
+    
+    dictonaryJson = json.dumps(lookup, indent=4, ensure_ascii=False)
+
+    with open("data/kanji/results/JLPT_vocab.json", "w", encoding='utf8') as writeFile:
+        writeFile.write(dictonaryJson)
+    print("Created json file at: data/kanji/results/JLPT_vocab.json")
+
+makeVocabCSV()
+makeVocabJSON()

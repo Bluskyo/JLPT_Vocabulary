@@ -2,6 +2,8 @@ import pdfplumber
 import csv
 import re
 
+# source pdfs are found at: https://www.tanos.co.uk/jlpt/jlpt5/
+
 def containsJapanese(text):
     # regex covers Hiragana, Katakana, and common Kanji ranges
     pattern = re.compile(r'[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]')
@@ -19,9 +21,7 @@ def split_synonyms(text):
     # clean up strip whitespace and remove empty strings
     return [p.strip() for p in parts if p.strip()]
 
-# pdfs found at: https://www.tanos.co.uk/jlpt/jlpt5/
-
-def pdfParseNoCleanup(pdf_path, output_csv):
+def vocabPdfParseNoCleanup(pdf_path, output_csv):
     extracted_data = []
 
     with pdfplumber.open(pdf_path) as pdf:
@@ -60,7 +60,7 @@ def pdfParseNoCleanup(pdf_path, output_csv):
 
     print(f"Successfully extracted {len(extracted_data)} entries to {output_csv}")    
 
-def cleanParseAnkiPdf(pdf_path, output_csv):
+def vocabCleanParseAnkiPdf(pdf_path, output_csv):
     extracted_data = []
     # catches ・する entries
     cleanup_pattern = r'[・.]?\s*する\s*$'
@@ -106,7 +106,33 @@ def cleanParseAnkiPdf(pdf_path, output_csv):
 
     print(f"Successfully extracted {len(extracted_data)} entries to {output_csv}")
 
-for jlptLevel in range(4, 5):
+def kanjiPdfParse(pdf_path, output_csv): 
+    extracted_data = []
+
+    with pdfplumber.open(pdf_path) as pdf:
+        for page in pdf.pages:
+            table = page.extract_table()
+            
+            if table:
+                for row in table:  
+                    if not row or row[0] == "Kanji":
+                        continue
+                    kanji = next((row[i].strip() for i in [0, 1] if row[i]), "")
+                    if (kanji and len(kanji) == 1):
+                        extracted_data.append(kanji)
+    print("Extracted data length = ", len(extracted_data))
+    print(extracted_data)
+
+    with open(output_csv, 'w', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerow(["Kanji"])
+        writer.writerows(extracted_data)
+
+    print(f"Successfully extracted {len(extracted_data)} entries to {output_csv}")
+                
+
+for jlptLevel in range(1, 6):
     print(f"Parsing VocabList.N{jlptLevel}.pdf...")
-    #pdfParseNoCleanup(f"data/rawData/VocabList.N{jlptLevel}.pdf", f"data/parseNoCleanup/n{jlptLevel}_vocab.csv")
-    cleanParseAnkiPdf(f"data/rawData/VocabList.N{jlptLevel}.pdf", f"data/parsedData/n{jlptLevel}_vocab_cleaned.csv")
+    #vocabPdfParseNoCleanup(f"data/rawData/VocabList.N{jlptLevel}.pdf", f"data/vocab/parseNoCleanup/n{jlptLevel}_vocab.csv")
+    #vocabCleanParseAnkiPdf(f"data/rawData/VocabList.N{jlptLevel}.pdf", f"data/vocab/parsedData/n{jlptLevel}_vocab_cleaned.csv")
+    kanjiPdfParse(f"data/rawData/KanjiList.N{jlptLevel}.pdf", f"data/kanji/parsedData/n{jlptLevel}_kanji.csv")
