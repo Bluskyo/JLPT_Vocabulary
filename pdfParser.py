@@ -120,7 +120,7 @@ def kanjiPdfParse(pdf_path, output_csv):
                     kanji = next((row[i].strip() for i in [0, 1] if row[i]), "")
                     if (kanji and len(kanji) == 1):
                         extracted_data.append(kanji)
-    print("Extracted data length = ", len(extracted_data))
+                        continue
     print(extracted_data)
 
     with open(output_csv, 'w', newline='', encoding='utf-8') as f:
@@ -129,10 +129,9 @@ def kanjiPdfParse(pdf_path, output_csv):
         writer.writerows(extracted_data)
 
     print(f"Successfully extracted {len(extracted_data)} entries to {output_csv}")
-                
 
 for jlptLevel in range(1, 6):
     print(f"Parsing VocabList.N{jlptLevel}.pdf...")
-    #vocabPdfParseNoCleanup(f"data/rawData/VocabList.N{jlptLevel}.pdf", f"data/vocab/parseNoCleanup/n{jlptLevel}_vocab.csv")
-    #vocabCleanParseAnkiPdf(f"data/rawData/VocabList.N{jlptLevel}.pdf", f"data/vocab/parsedData/n{jlptLevel}_vocab_cleaned.csv")
+    vocabPdfParseNoCleanup(f"data/rawData/VocabList.N{jlptLevel}.pdf", f"data/vocab/parseNoCleanup/n{jlptLevel}_vocab.csv")
+    vocabCleanParseAnkiPdf(f"data/rawData/VocabList.N{jlptLevel}.pdf", f"data/vocab/parsedData/n{jlptLevel}_vocab_cleaned.csv")
     kanjiPdfParse(f"data/rawData/KanjiList.N{jlptLevel}.pdf", f"data/kanji/parsedData/n{jlptLevel}_kanji.csv")
