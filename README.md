@@ -8,13 +8,12 @@ The project files include parsed versions of the pdf files both a raw parse with
 The cleaned files have a stricter filter and have had the following manual changes made:
 
 Manual Changes:<br>
-n1_vocab_cleaned.csv:<br>
+**n1_vocab_cleaned.csv:**<br>
 Removed "対立,たいりつ". Reason: Already defined in N2.<br>
-n2_vocab_cleaned.csv:<br>
-Updated: "=立" to "対立". Reason: Likly a conversion bug.
-Removed "あげる (=やる),あげる (=やる)". Reason: Doesnt fit any words that are not already defined.<br>
-n3_vocab_cleaned.csv:<br>
-removed: "暖かい,あたたか(い)" Reason: Already defined in N5.
+**n2_vocab_cleaned.csv:**<br>
+Updated: "=立" to "対立". Reason: Likly a conversion bug.<br>Removed "あげる (=やる),あげる (=やる)". Reason: Doesnt fit any words that are not already defined.<br>
+**n3_vocab_cleaned.csv:**<br>
+Removed: "暖かい,あたたか(い)" Reason: Already defined in N5.
 
 
 ## NOTE: NEW IN v1.4: 
