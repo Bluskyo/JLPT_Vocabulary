@@ -1,4 +1,4 @@
-# JLPT Vocabulary in JSON and CSV Formats
+# JLPT Vocabulary and kanji in JSON and CSV Formats
 The original files from: https://www.tanos.co.uk/jlpt/ are formatted in difficult to read file structures like .anki, .mem, .doc, .pdf. 
 This Project aims to provide a clean, lossless and easy format for these files.<br>
 
@@ -15,12 +15,11 @@ Updated: "=立" to "対立". Reason: Likly a conversion bug.<br>Removed "あげ�
 **n3_vocab_cleaned.csv:**<br>
 Removed: "暖かい,あたたか(い)" Reason: Already defined in N5.
 
-
-## NOTE: NEW IN v1.4: 
+## NOTE: 
 With the new structuring of the data it is now possible to check the reading of the word.
 Problems with entries such as "年" where it can have the reading as  "とし", "ねん", "とせ". Not to mention all the readings for 生...
 
-Kanji and readings with multiple levels are preserved:<br>
+Kanji and readings with multiple levels are preserved: JLPT_vocab_ALL.json structure<br>
 ```
     "挨拶": [
         {
@@ -36,27 +35,7 @@ Kanji and readings with multiple levels are preserved:<br>
     ],
 
 ```
----
-<br>If used with JMDict, these words are not found:<br>
-`0: "依"
-1: "伊井"
-2: "お八"
-3: "僅"
-4: "巨"
-5: "佐"
-6: "しいんと"
-7: "働"
-8: "伐"
-9: "不山戯る"
-10: "倣"
-11: "藍褸"
-12: "あひら"
-13: "いっていらっしゃい"
-14: "おげんきで"
-15: "おまちください"
-16: "ごぞんじですか"
-17: "滑れる"
-18: "Ͼ立"
-19: "×"
-20: "ぺん"
-21: "よると"`
+JLPT_kanji_ALL.json structure<br>
+```
+"気": 5,
+```
