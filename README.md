@@ -1,5 +1,7 @@
 # JLPT Vocabulary and kanji in JSON and CSV Formats
-The original files from: https://www.tanos.co.uk/jlpt/ are formatted in difficult to read file structures like .anki, .mem, .doc, .pdf. 
+Data from: https://www.tanos.co.uk/jlpt/ are licenced under Creative Commons "BY" by Jonathan Waller
+
+The original files are formatted in difficult to read file structures like .anki, .mem, .doc, .pdf. 
 This Project aims to provide a clean, lossless and easy format for these files.<br>
 
 You can download the files here: <a href="https://github.com/Bluskyo/JLPT_Vocabulary/releases/latest">Latest release</a>
